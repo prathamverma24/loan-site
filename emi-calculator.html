@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hanumath Enterprises | EMI Calculator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              500: '#f97316',
+              600: '#ea580c',
+              900: '#111827'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px -12px rgba(2, 8, 23, 0.16)',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-100 text-slate-900 antialiased">
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white">
+    <nav class="mx-auto flex max-w-[1800px] items-center justify-between px-4 py-4 sm:px-8">
+      <a href="index.html#top" class="flex items-center gap-3">
+        <span class="grid h-12 w-12 place-content-center rounded-lg border-2 border-slate-700 text-3xl font-extrabold text-brand-500">H</span>
+        <span class="leading-tight">
+          <span class="block text-3xl font-extrabold tracking-tight text-brand-500">Hanumath </span>
+          <span class="block text-[10px] font-medium text-slate-500">Enterprises</span>
+        </span>
+      </a>
+
+      <button id="menuBtn" class="inline-flex items-center rounded-lg p-2 text-slate-700 hover:bg-slate-100 lg:hidden" aria-label="Open menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <ul class="hidden items-center gap-8 text-base font-semibold text-slate-900 lg:flex">
+        <li><a href="index.html#hero" class="hover:text-brand-600">Home</a></li>
+        <li><a href="index.html#process" class="hover:text-brand-600">How It Works</a></li>
+        <li><a href="index.html#products" class="hover:text-brand-600">Loan Products</a></li>
+        <li><a href="emi-calculator.html" class="relative rounded-xl border border-orange-200 bg-orange-50 px-4 py-2 text-brand-500 shadow-sm after:absolute after:bottom-1 after:left-1/2 after:h-2 after:w-2 after:-translate-x-1/2 after:rounded-full after:bg-brand-500">EMI Calculator</a></li>
+        <li><a href="index.html#why" class="hover:text-brand-600">About Us</a></li>
+        <li><a href="index.html#contact" class="hover:text-brand-600">Support</a></li>
+        <li><a href="index.html#top" class="hover:text-brand-600">Make in India</a></li>
+      </ul>
+
+      <a href="index.html#contact" class="hidden rounded-xl bg-brand-500 px-7 py-3 text-lg font-semibold text-white shadow-soft transition hover:bg-brand-600 lg:inline-flex">Pay Now</a>
+    </nav>
+
+    <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-4 py-4 lg:hidden">
+      <ul class="space-y-3 text-sm font-medium text-slate-700">
+        <li><a href="index.html#hero" class="mobile-link block rounded-lg px-3 py-2 hover:bg-slate-100">Home</a></li>
+        <li><a href="index.html#process" class="mobile-link block rounded-lg px-3 py-2 hover:bg-slate-100">How It Works</a></li>
+        <li><a href="index.html#products" class="mobile-link block rounded-lg px-3 py-2 hover:bg-slate-100">Loan Products</a></li>
+        <li><a href="emi-calculator.html" class="mobile-link block rounded-lg bg-brand-50 px-3 py-2 text-brand-600">EMI Calculator</a></li>
+        <li><a href="index.html#why" class="mobile-link block rounded-lg px-3 py-2 hover:bg-slate-100">About Us</a></li>
+        <li><a href="index.html#contact" class="mobile-link block rounded-lg px-3 py-2 hover:bg-slate-100">Support</a></li>
+        <li><a href="index.html#top" class="mobile-link block rounded-lg px-3 py-2 hover:bg-slate-100">Make in India</a></li>
+        <li><a href="index.html#contact" class="mobile-link mt-2 block rounded-lg bg-brand-500 px-3 py-2 text-center font-semibold text-white">Pay Now</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="bg-orange-50 py-20">
+      <div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-extrabold text-slate-900 sm:text-5xl">EMI Calculator</h1>
+        <p class="mt-5 text-lg text-slate-600">Plan your loan repayment with live calculations. Adjust amount, tenure, and rate to see your payable instantly.</p>
+      </div>
+    </section>
+
+    <section class="pb-20 pt-12">
+      <div class="mx-auto max-w-7xl rounded-[2rem] border border-orange-200/70 bg-orange-50/50 p-4 shadow-soft sm:p-8">
+        <div class="grid gap-6 xl:grid-cols-[minmax(0,1fr),280px]">
+          <div class="space-y-6 rounded-3xl border border-orange-100 bg-white/70 p-4 sm:p-6">
+            <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              <article class="rounded-2xl border border-orange-100 bg-white p-4">
+                <div class="flex items-center justify-between">
+                  <h2 class="text-2xl font-semibold">Loan Amount</h2>
+                  <span class="rounded-lg bg-brand-500 px-2 py-1 text-xs font-semibold text-white">INR</span>
+                </div>
+                <p id="amountLabel" class="mt-4 text-4xl font-bold text-brand-500">&#8377; 1,00,000</p>
+                <input id="amountRange" type="range" min="5000" max="1000000" step="1000" value="100000" class="mt-4 w-full accent-brand-500" />
+                <input id="amountInput" type="number" min="5000" max="1000000" step="1000" value="100000" class="mt-4 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-right text-xl font-medium outline-none focus:border-brand-500" />
+              </article>
+
+              <article class="rounded-2xl border border-orange-100 bg-white p-4">
+                <div class="flex items-center justify-between">
+                  <h2 class="text-2xl font-semibold">Tenure</h2>
+                  <span class="rounded-lg bg-amber-400 px-2 py-1 text-xs font-semibold text-white">Days</span>
+                </div>
+                <p id="tenureLabel" class="mt-4 text-4xl font-bold text-amber-500">30 days</p>
+                <input id="tenureRange" type="range" min="7" max="40" step="1" value="30" class="mt-4 w-full accent-amber-400" />
+                <input id="tenureInput" type="number" min="7" max="40" step="1" value="30" class="mt-4 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-right text-xl font-medium outline-none focus:border-amber-400" />
+              </article>
+
+              <article class="rounded-2xl border border-green-100 bg-white p-4">
+                <div class="flex items-center justify-between">
+                  <h2 class="text-2xl font-semibold">Interest Rate</h2>
+                  <span class="rounded-lg bg-green-500 px-2 py-1 text-xs font-semibold text-white">%</span>
+                </div>
+                <p id="rateLabel" class="mt-4 text-4xl font-bold text-green-600">1.00% / month</p>
+                <input id="rateRange" type="range" min="0.5" max="5" step="0.1" value="1" class="mt-4 w-full accent-green-500" />
+                <input id="rateInput" type="number" min="0.5" max="5" step="0.1" value="1" class="mt-4 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-right text-xl font-medium outline-none focus:border-green-500" />
+              </article>
+            </div>
+
+            <div class="grid gap-6 rounded-2xl border border-slate-200 bg-white p-5 lg:grid-cols-[270px,minmax(0,1fr)]">
+              <div class="flex items-center justify-center">
+                <div id="donut" class="relative grid h-56 w-56 place-content-center rounded-full" style="background:conic-gradient(#22c55e 0deg 210deg,#f59e0b 210deg 330deg,#f97316 330deg 360deg);">
+                  <div class="grid h-36 w-36 place-content-center rounded-full bg-white text-center shadow-soft">
+                    <p id="centerAmount" class="text-4xl font-bold text-slate-900">&#8377; 1,00,000</p>
+                    <p id="centerTenure" class="text-sm text-slate-500">30 days</p>
+                    <p id="centerRate" class="text-sm text-slate-500">1.00% rate</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="space-y-3 border-b border-slate-200 pb-4 text-lg">
+                  <div class="flex items-center justify-between"><span>Loan Amount:</span><strong id="summaryAmount" class="text-brand-500">&#8377; 1,00,000</strong></div>
+                  <div class="flex items-center justify-between"><span>Tenure:</span><strong id="summaryTenure" class="text-amber-500">30 days</strong></div>
+                  <div class="flex items-center justify-between"><span>Interest Rate:</span><strong id="summaryRate" class="text-green-600">1.00%</strong></div>
+                  <div class="flex items-center justify-between"><span>Processing Fee:</span><strong>10%</strong></div>
+                  <div class="flex items-center justify-between"><span>APR:</span><strong id="summaryApr" class="text-indigo-600">0.00%</strong></div>
+                </div>
+
+                <div class="mt-4 rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3">
+                  <p class="text-sm text-slate-600">Total Payable</p>
+                  <p id="totalPayable" class="text-4xl font-extrabold text-slate-900">&#8377; 0</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-white px-4 py-4">
+              <div class="flex flex-wrap items-center justify-center gap-6 text-sm font-semibold sm:text-base">
+                <span class="inline-flex items-center gap-2"><span class="h-3 w-3 rounded-full bg-brand-500"></span>Loan Amount</span>
+                <span class="inline-flex items-center gap-2"><span class="h-3 w-3 rounded-full bg-amber-400"></span>Tenure</span>
+                <span class="inline-flex items-center gap-2"><span class="h-3 w-3 rounded-full bg-green-500"></span>Interest Rate</span>
+              </div>
+            </div>
+
+            <a href="index.html#contact" class="block rounded-2xl bg-brand-500 px-6 py-4 text-center text-2xl font-semibold text-white transition hover:bg-brand-600">Apply Now</a>
+          </div>
+
+          <aside class="rounded-3xl border border-orange-200 bg-orange-100/60 p-6">
+            <h3 class="text-3xl font-bold text-slate-900">Rates & Charges</h3>
+            <ul class="mt-5 space-y-3 text-lg text-slate-700">
+              <li>&bull; Loan Amount: <strong>&#8377;5,000 to &#8377;10,00,000</strong></li>
+              <li>&bull; Tenure: <strong>7 to 40 Days</strong></li>
+              <li>&bull; No Pre-closure Charges</li>
+              <li>&bull; No Prepayment Charges</li>
+              <li>&bull; Processing Fee: <strong>10%</strong></li>
+              <li>&bull; APR calculated by formula</li>
+              <li>&bull; Net Monthly Salary: <strong>&ge; &#8377;40,000</strong></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    const amountRange = document.getElementById('amountRange');
+    const amountInput = document.getElementById('amountInput');
+    const tenureRange = document.getElementById('tenureRange');
+    const tenureInput = document.getElementById('tenureInput');
+    const rateRange = document.getElementById('rateRange');
+    const rateInput = document.getElementById('rateInput');
+
+    const amountLabel = document.getElementById('amountLabel');
+    const tenureLabel = document.getElementById('tenureLabel');
+    const rateLabel = document.getElementById('rateLabel');
+
+    const centerAmount = document.getElementById('centerAmount');
+    const centerTenure = document.getElementById('centerTenure');
+    const centerRate = document.getElementById('centerRate');
+
+    const summaryAmount = document.getElementById('summaryAmount');
+    const summaryTenure = document.getElementById('summaryTenure');
+    const summaryRate = document.getElementById('summaryRate');
+    const summaryApr = document.getElementById('summaryApr');
+    const totalPayable = document.getElementById('totalPayable');
+    const donut = document.getElementById('donut');
+
+    const formatINR = (num) => new Intl.NumberFormat('en-IN').format(Math.round(num));
+
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+    function syncInputs(source) {
+      if (source === 'amountRange') amountInput.value = amountRange.value;
+      if (source === 'amountInput') amountRange.value = amountInput.value;
+      if (source === 'tenureRange') tenureInput.value = tenureRange.value;
+      if (source === 'tenureInput') tenureRange.value = tenureInput.value;
+      if (source === 'rateRange') rateInput.value = rateRange.value;
+      if (source === 'rateInput') rateRange.value = rateInput.value;
+    }
+
+    function updateCalculator() {
+      let amount = clamp(Number(amountInput.value) || 0, Number(amountRange.min), Number(amountRange.max));
+      let tenureDays = clamp(Number(tenureInput.value) || 0, Number(tenureRange.min), Number(tenureRange.max));
+      let monthlyRate = clamp(Number(rateInput.value) || 0, Number(rateRange.min), Number(rateRange.max));
+
+      amountInput.value = amount;
+      amountRange.value = amount;
+      tenureInput.value = tenureDays;
+      tenureRange.value = tenureDays;
+      rateInput.value = monthlyRate;
+      rateRange.value = monthlyRate;
+
+      const tenureMonths = tenureDays / 30;
+      const interestAmount = amount * (monthlyRate / 100) * tenureMonths;
+      const processingFee = amount * 0.1;
+      const total = amount + interestAmount + processingFee;
+      const apr = ((interestAmount + processingFee) / amount) * (365 / tenureDays) * 100;
+
+      const principalPercent = (amount / total) * 360;
+      const interestPercent = (interestAmount / total) * 360;
+      const feePercent = (processingFee / total) * 360;
+
+      amountLabel.textContent = `\u20B9 ${formatINR(amount)}`;
+      tenureLabel.textContent = `${tenureDays} days`;
+      rateLabel.textContent = `${monthlyRate.toFixed(2)}% / month`;
+
+      centerAmount.textContent = `\u20B9 ${formatINR(amount)}`;
+      centerTenure.textContent = `${tenureDays} days`;
+      centerRate.textContent = `${monthlyRate.toFixed(2)}% rate`;
+
+      summaryAmount.textContent = `\u20B9 ${formatINR(amount)}`;
+      summaryTenure.textContent = `${tenureDays} days`;
+      summaryRate.textContent = `${monthlyRate.toFixed(2)}%`;
+      summaryApr.textContent = `${apr.toFixed(2)}%`;
+      totalPayable.textContent = `\u20B9 ${formatINR(total)}`;
+
+      donut.style.background = `conic-gradient(#22c55e 0deg ${principalPercent}deg,#f59e0b ${principalPercent}deg ${principalPercent + interestPercent}deg,#f97316 ${principalPercent + interestPercent}deg ${principalPercent + interestPercent + feePercent}deg)`;
+    }
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!expanded));
+    });
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    amountRange.addEventListener('input', () => { syncInputs('amountRange'); updateCalculator(); });
+    amountInput.addEventListener('input', () => { syncInputs('amountInput'); updateCalculator(); });
+
+    tenureRange.addEventListener('input', () => { syncInputs('tenureRange'); updateCalculator(); });
+    tenureInput.addEventListener('input', () => { syncInputs('tenureInput'); updateCalculator(); });
+
+    rateRange.addEventListener('input', () => { syncInputs('rateRange'); updateCalculator(); });
+    rateInput.addEventListener('input', () => { syncInputs('rateInput'); updateCalculator(); });
+
+    updateCalculator();
+  </script>
+</body>
+</html>
+
+
