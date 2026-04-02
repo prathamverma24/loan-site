@@ -20,13 +20,18 @@
         if (!navbar) return;
 
         const topBar = document.querySelector('.top-bar');
-        const topBarHeight = topBar ? topBar.offsetHeight : 0;
         let lastScrollY = window.scrollY;
+
+        function syncTopOffset() {
+            const topBarHeight = topBar ? topBar.offsetHeight : 0;
+            document.documentElement.style.setProperty('--top-bar-height', topBarHeight + 'px');
+        }
 
         function updateNavbar() {
             const currentY = window.scrollY;
             const isScrollingDown = currentY > lastScrollY;
 
+            syncTopOffset();
             navbar.classList.toggle('scrolled', currentY > 90);
 
             if (currentY <= 10) {
@@ -42,10 +47,7 @@
 
         updateNavbar();
         window.addEventListener('scroll', updateNavbar, { passive: true });
-
-        if (topBarHeight > 0) {
-            document.documentElement.style.setProperty('--top-bar-height', topBarHeight + 'px');
-        }
+        window.addEventListener('resize', syncTopOffset);
     }
 
     function setupMobileMenu() {
@@ -57,6 +59,76 @@
             const isOpen = navMenu.classList.toggle('is-open');
             navMenu.style.display = isOpen ? 'flex' : '';
             hamburger.classList.toggle('is-open', isOpen);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (window.innerWidth > 991) return;
+            if (!navMenu.classList.contains('is-open')) return;
+            if (navMenu.contains(event.target) || hamburger.contains(event.target)) return;
+
+            navMenu.classList.remove('is-open');
+            navMenu.style.display = '';
+            hamburger.classList.remove('is-open');
+            navMenu.querySelectorAll('.nav-item-dropdown.is-open').forEach((item) => item.classList.remove('is-open'));
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 991) {
+                navMenu.classList.remove('is-open');
+                navMenu.style.display = '';
+                hamburger.classList.remove('is-open');
+                navMenu.querySelectorAll('.nav-item-dropdown.is-open').forEach((item) => item.classList.remove('is-open'));
+            }
+        });
+    }
+
+    function setupResponsiveApplyButtonPlacement() {
+        const applyBtn = document.querySelector('.apply-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        if (!applyBtn || !navMenu) return;
+
+        const originalParent = applyBtn.parentElement;
+        const originalNextSibling = applyBtn.nextElementSibling;
+
+        function placeApplyButton() {
+            if (window.innerWidth <= 991) {
+                if (applyBtn.parentElement !== navMenu) {
+                    navMenu.appendChild(applyBtn);
+                }
+                applyBtn.classList.add('apply-btn-in-menu');
+            } else {
+                if (applyBtn.parentElement !== originalParent) {
+                    if (originalNextSibling && originalNextSibling.parentElement === originalParent) {
+                        originalParent.insertBefore(applyBtn, originalNextSibling);
+                    } else {
+                        originalParent.appendChild(applyBtn);
+                    }
+                }
+                applyBtn.classList.remove('apply-btn-in-menu');
+            }
+        }
+
+        placeApplyButton();
+        window.addEventListener('resize', placeApplyButton);
+    }
+
+    function setupMobileDropdowns() {
+        const dropdownButtons = document.querySelectorAll('.nav-item-dropdown > .nav-link-button');
+        if (!dropdownButtons.length) return;
+
+        dropdownButtons.forEach((button) => {
+            button.addEventListener('click', (event) => {
+                if (window.innerWidth > 991) return;
+                event.preventDefault();
+
+                const parent = button.closest('.nav-item-dropdown');
+                if (!parent) return;
+
+                const shouldOpen = !parent.classList.contains('is-open');
+                const siblings = parent.parentElement?.querySelectorAll('.nav-item-dropdown.is-open') || [];
+                siblings.forEach((item) => item.classList.remove('is-open'));
+                parent.classList.toggle('is-open', shouldOpen);
+            });
         });
     }
 
@@ -193,30 +265,34 @@
     }
 
     function setupScrollAnimations() {
+        const useHorizontalMotion = window.innerWidth > 991;
+        const leftX = useHorizontalMotion ? -40 : 0;
+        const rightX = useHorizontalMotion ? 40 : 0;
+
         animateOnScroll('.service-page-hero-inner', { y: 36, stagger: 0 });
-        animateOnScroll('.service-main-content', { x: -40, y: 0, stagger: 0 });
-        animateOnScroll('.service-side-panel, .service-side-card', { x: 40, y: 0, stagger: 0.12 });
+        animateOnScroll('.service-main-content', { x: leftX, y: useHorizontalMotion ? 0 : 30, stagger: 0 });
+        animateOnScroll('.service-side-panel, .service-side-card', { x: rightX, y: useHorizontalMotion ? 0 : 30, stagger: 0.12 });
         animateOnScroll('.service-related-card', { y: 28, stagger: 0.12 });
 
         animateOnScroll('.about-hero-inner', { y: 36, stagger: 0 });
-        animateOnScroll('.about-main-content, .about-story-content', { x: -40, y: 0, stagger: 0 });
-        animateOnScroll('.about-main-image, .about-story-image', { x: 40, y: 0, stagger: 0 });
+        animateOnScroll('.about-main-content, .about-story-content', { x: leftX, y: useHorizontalMotion ? 0 : 30, stagger: 0 });
+        animateOnScroll('.about-main-image, .about-story-image', { x: rightX, y: useHorizontalMotion ? 0 : 30, stagger: 0 });
         animateOnScroll('.about-value-card, .about-mission-card', { y: 28, stagger: 0.12 });
         animateOnScroll('.partners-grid--about .partner-card', { y: 24, stagger: 0.08 });
 
         animateOnScroll('.process-step', { stagger: 0.2 });
-        animateOnScroll('.expertise-content', { x: -50, y: 0, stagger: 0 });
-        animateOnScroll('.expertise-image', { x: 50, y: 0, stagger: 0 });
-        animateOnScroll('.awards-left', { x: -40, y: 0, stagger: 0 });
-        animateOnScroll('.awards-right', { x: 40, y: 0, stagger: 0 });
+        animateOnScroll('.expertise-content', { x: useHorizontalMotion ? -50 : 0, y: useHorizontalMotion ? 0 : 32, stagger: 0 });
+        animateOnScroll('.expertise-image', { x: useHorizontalMotion ? 50 : 0, y: useHorizontalMotion ? 0 : 32, stagger: 0 });
+        animateOnScroll('.awards-left', { x: leftX, y: useHorizontalMotion ? 0 : 30, stagger: 0 });
+        animateOnScroll('.awards-right', { x: rightX, y: useHorizontalMotion ? 0 : 30, stagger: 0 });
         animateOnScroll('.cert-item', { y: 40, stagger: 0.18 });
         animateOnScroll('.prof-service-card', { y: 36, stagger: 0.16 });
         animateOnScroll('.partners-header', { y: 28, stagger: 0 });
         animateOnScroll('.partner-card', { y: 26, stagger: 0.08 });
         animateOnScroll('.testimonial-card', { y: 40, stagger: 0.16 });
         animateOnScroll('.faq-item', { y: 28, stagger: 0.1 });
-        animateOnScroll('.contact-left', { x: -45, y: 0, stagger: 0 });
-        animateOnScroll('.contact-right', { x: 45, y: 0, stagger: 0 });
+        animateOnScroll('.contact-left', { x: useHorizontalMotion ? -45 : 0, y: useHorizontalMotion ? 0 : 30, stagger: 0 });
+        animateOnScroll('.contact-right', { x: useHorizontalMotion ? 45 : 0, y: useHorizontalMotion ? 0 : 30, stagger: 0 });
         animateOnScroll('.footer-cta', { y: 34, stagger: 0 });
         animateOnScroll('.footer-brand, .footer-links-column, .footer-contact-column', { y: 26, stagger: 0.12 });
 
@@ -234,7 +310,6 @@
         if (!hasGSAP || !hasScrollTrigger || prefersReducedMotion) return;
 
         const sectionSelectors = [
-            '.hero-content-wrapper',
             '.process-step',
             '.expertise-content',
             '.awards-left',
@@ -271,7 +346,7 @@
         sectionSelectors.forEach((sectionSelector) => {
             const sections = document.querySelectorAll(sectionSelector);
             sections.forEach((section) => {
-                const textTargets = section.querySelectorAll('h1, h2, h3, h4, p, small, .hero-service-label, .process-label, .faq-label, .cert-hashtag, .achievement-tag, .nav-link, .form-btn, .hero-btn, .apply-btn, .learn-more-btn, .service-btn, .calculator-btn');
+                const textTargets = section.querySelectorAll('h1, h2, h3, h4, p, small, .hero-service-label, .process-label, .faq-label, .cert-hashtag, .achievement-tag, .form-btn, .hero-btn, .apply-btn, .learn-more-btn, .service-btn, .calculator-btn');
                 if (!textTargets.length) return;
 
                 gsap.fromTo(
@@ -418,6 +493,7 @@
 
     function setupProfessionalServicesCarousel() {
         const carousel = document.querySelector('.prof-services-carousel');
+        const sliderWrapper = document.querySelector('#professional-services .prof-services-slider-wrapper');
         const slides = document.querySelectorAll('.prof-service-card');
         const nextBtn = document.querySelector('#professional-services .prof-nav-btn.next');
         const prevBtn = document.querySelector('#professional-services .prof-nav-btn.prev');
@@ -437,8 +513,12 @@
             const perView = slidesPerView();
             const max = Math.max(0, slides.length - perView);
             current = Math.min(index, max);
-            const offset = -(current * (100 / perView));
-            carousel.style.transform = `translateX(${offset}%)`;
+            const firstSlide = slides[0];
+            const cardWidth = firstSlide.getBoundingClientRect().width;
+            const carouselStyle = window.getComputedStyle(carousel);
+            const gap = parseFloat(carouselStyle.columnGap || carouselStyle.gap || '0');
+            const offset = -(current * (cardWidth + gap));
+            carousel.style.transform = `translateX(${offset}px)`;
             slides.forEach((s, i) => s.classList.toggle('active', i === current));
         }
 
@@ -459,6 +539,19 @@
             timer = setInterval(next, 3500);
         }
 
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let moved = false;
+        const swipeThreshold = 45;
+
+        function handleSwipe() {
+            const delta = touchEndX - touchStartX;
+            if (Math.abs(delta) < swipeThreshold) return;
+            if (delta < 0) next();
+            else prev();
+            startAuto();
+        }
+
         nextBtn.addEventListener('click', () => {
             next();
             startAuto();
@@ -472,6 +565,39 @@
         carousel.addEventListener('mouseenter', () => clearInterval(timer));
         carousel.addEventListener('mouseleave', startAuto);
         window.addEventListener('resize', () => render(current));
+
+        if (sliderWrapper) {
+            sliderWrapper.addEventListener('touchstart', (e) => {
+                moved = false;
+                touchStartX = e.changedTouches[0].clientX;
+            }, { passive: true });
+
+            sliderWrapper.addEventListener('touchmove', () => {
+                moved = true;
+            }, { passive: true });
+
+            sliderWrapper.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].clientX;
+                handleSwipe();
+            }, { passive: true });
+        }
+
+        slides.forEach((slide) => {
+            const href = slide.getAttribute('data-href');
+            if (!href) return;
+
+            slide.addEventListener('click', () => {
+                if (moved) return;
+                window.location.href = href;
+            });
+
+            slide.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    window.location.href = href;
+                }
+            });
+        });
 
         render(0);
         startAuto();
@@ -523,6 +649,8 @@
     onReady(() => {
         setupNavbar();
         setupMobileMenu();
+        setupMobileDropdowns();
+        setupResponsiveApplyButtonPlacement();
         setupSmoothScroll();
         setupHeroCarousel();
         setupScrollAnimations();
