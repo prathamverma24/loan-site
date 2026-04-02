@@ -231,30 +231,10 @@
         </div>
         <div class="footer-bottom"><p>&copy; 2024 Hanumath Enterprises. All rights reserved.</p></div>
     </footer>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
     <script>
-        const navbar = document.querySelector('.navbar');
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            if (window.scrollY > 10) {
-                navbar.classList.add('navbar-hidden');
-            } else {
-                navbar.classList.remove('navbar-hidden');
-            }
-        });
-
-        hamburger.addEventListener('click', () => {
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-        });
-
         const amountInput = document.getElementById('loanAmount');
         const rateInput = document.getElementById('interestRate');
         const tenureInput = document.getElementById('tenure');
@@ -274,41 +254,45 @@
             }).format(value);
         }
 
-        calculateBtn.addEventListener('click', () => {
-            const principal = parseFloat(amountInput.value);
-            const annualRate = parseFloat(rateInput.value);
-            const tenure = parseFloat(tenureInput.value);
-            const tenureType = tenureTypeSelect.value;
+        if (calculateBtn) {
+            calculateBtn.addEventListener('click', () => {
+                const principal = parseFloat(amountInput.value);
+                const annualRate = parseFloat(rateInput.value);
+                const tenure = parseFloat(tenureInput.value);
+                const tenureType = tenureTypeSelect.value;
 
-            if (!principal || principal <= 0 || annualRate < 0 || !tenure || tenure <= 0) {
-                emiOut.textContent = 'Please enter valid values';
-                interestOut.textContent = '-';
-                totalOut.textContent = '-';
+                if (!principal || principal <= 0 || annualRate < 0 || !tenure || tenure <= 0) {
+                    emiOut.textContent = 'Please enter valid values';
+                    interestOut.textContent = '-';
+                    totalOut.textContent = '-';
+                    resultBox.classList.add('active');
+                    return;
+                }
+
+                const months = tenureType === 'years' ? tenure * 12 : tenure;
+                const monthlyRate = annualRate / 12 / 100;
+
+                let emi;
+                if (monthlyRate === 0) {
+                    emi = principal / months;
+                } else {
+                    const factor = Math.pow(1 + monthlyRate, months);
+                    emi = (principal * monthlyRate * factor) / (factor - 1);
+                }
+
+                const totalPayment = emi * months;
+                const totalInterest = totalPayment - principal;
+
+                emiOut.textContent = formatINR(Math.round(emi));
+                interestOut.textContent = formatINR(Math.round(totalInterest));
+                totalOut.textContent = formatINR(Math.round(totalPayment));
                 resultBox.classList.add('active');
-                return;
-            }
-
-            const months = tenureType === 'years' ? tenure * 12 : tenure;
-            const monthlyRate = annualRate / 12 / 100;
-
-            let emi;
-            if (monthlyRate === 0) {
-                emi = principal / months;
-            } else {
-                const factor = Math.pow(1 + monthlyRate, months);
-                emi = (principal * monthlyRate * factor) / (factor - 1);
-            }
-
-            const totalPayment = emi * months;
-            const totalInterest = totalPayment - principal;
-
-            emiOut.textContent = formatINR(Math.round(emi));
-            interestOut.textContent = formatINR(Math.round(totalInterest));
-            totalOut.textContent = formatINR(Math.round(totalPayment));
-            resultBox.classList.add('active');
-        });
-    </script>
-</body>
+            });
+        }
+    </script>`r`n</body>
 </html>
+
+
+
 
 
