@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,11 +12,11 @@
         <div class="top-bar-container">
             <div class="top-bar-left">
                 <span class="top-bar-item">
-                    <a href="mailto:info@hanumath.com">✉️ info@hanumath.com</a>
+                    <a href="mailto:info@hanumath.com">âœ‰ï¸ info@hanumath.com</a>
                 </span>
                 <span class="top-bar-divider">|</span>
                 <span class="top-bar-item">
-                    <a href="tel:+919899786114">📞 +91 98997 86114</a>
+                    <a href="tel:+919899786114">ðŸ“ž +91 98997 86114</a>
                 </span>
                 <span class="top-bar-divider">|</span>
                 <span class="top-bar-item">
@@ -24,10 +24,31 @@
                 </span>
             </div>
             <div class="top-bar-right">
-                <a href="#" class="social-icon">f</a>
-                <a href="#" class="social-icon">in</a>
-                <a href="#" class="social-icon">🐦</a>
-                <a href="#" class="social-icon">📷</a>
+                <a href="#" class="social-icon" aria-label="Facebook" title="Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.4V10H8v3h2.7v8h2.8z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="Instagram" title="Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm0 1.9A3.9 3.9 0 0 0 3.9 7.8v8.4a3.9 3.9 0 0 0 3.9 3.9h8.4a3.9 3.9 0 0 0 3.9-3.9V7.8a3.9 3.9 0 0 0-3.9-3.9H7.8zm8.9 1.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.9a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="LinkedIn" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M6.4 8.7a1.9 1.9 0 1 1 0-3.8 1.9 1.9 0 0 1 0 3.8zM4.8 10h3.1v9.2H4.8V10zm5.1 0h3v1.3h.1c.4-.8 1.5-1.7 3.1-1.7 3.3 0 3.9 2.2 3.9 5v4.6h-3.1v-4c0-1 0-2.3-1.4-2.3s-1.6 1.1-1.6 2.2v4.1H9.9V10z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="YouTube" title="YouTube">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M21.6 8.2a2.9 2.9 0 0 0-2-2c-1.8-.5-7.6-.5-7.6-.5s-5.8 0-7.6.5a2.9 2.9 0 0 0-2 2A30 30 0 0 0 2 12a30 30 0 0 0 .4 3.8 2.9 2.9 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.9 2.9 0 0 0 2-2A30 30 0 0 0 22 12a30 30 0 0 0-.4-3.8zM10 15V9l5.2 3L10 15z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="X" title="X">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M18.9 3H22l-6.8 7.8L23 21h-6.1l-4.8-6.3L6.6 21H3.5l7.3-8.4L1.3 3h6.2l4.3 5.7L18.9 3zm-1.1 16h1.7L6.7 4.9H5l12.8 14.1z"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </div>
@@ -35,16 +56,32 @@
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <span class="logo-text">Hanumath Enterprises</span>
-            </div>
+            <div class="logo"><img src="images/logo-Hanumat.png" alt="Hanumath Enterprises" class="logo-image"></div>
             <div class="nav-menu">
                 <a href="index.html" class="nav-link active">Home</a>
                 <a href="about.html" class="nav-link">About us</a>
-                <a href="services.html" class="nav-link">Our Services</a>
+                <div class="nav-item-dropdown">
+                    <button type="button" class="nav-link nav-link--has-caret nav-link-button">
+                        Our Services <span class="nav-caret" aria-hidden="true"></span>
+                    </button>
+                    <div class="services-dropdown">
+                        <a href="home-loan.html" class="services-dropdown-link">Home Loan</a>
+                        <a href="personal-loan.html" class="services-dropdown-link">Personal Loan</a>
+                        <a href="business-loan.html" class="services-dropdown-link">Business Loan</a>
+                        <a href="car-loan.html" class="services-dropdown-link">Car Loan</a>
+                        <a href="investment-plan.html" class="services-dropdown-link">Investment Plan</a>
+                        <a href="life-insurance.html" class="services-dropdown-link">Life Insurance</a>
+                    </div>
+                </div>
                 <a href="calculator.html" class="nav-link">Calculator</a>
                 <a href="partners.html" class="nav-link">Partners</a>
-                <a href="achievement.html" class="nav-link">Achievement</a>
+                                <div class="nav-item-dropdown nav-item-dropdown--achievement">
+                    <button type="button" class="nav-link nav-link--has-caret nav-link-button">Achievement <span class="nav-caret" aria-hidden="true"></span></button>
+                    <div class="services-dropdown achievement-dropdown">
+                        <a href="awards.html" class="services-dropdown-link">Awards</a>
+                        <a href="certificates.html" class="services-dropdown-link">Certificates</a>
+                    </div>
+                </div>
                 <a href="#contact" class="nav-link">Contact Us</a>
             </div>
             <button class="apply-btn">APPLY NOW</button>
@@ -112,8 +149,8 @@
 
         <!-- Carousel Navigation -->
         <div class="carousel-nav">
-            <button class="carousel-btn prev">‹</button>
-            <button class="carousel-btn next">›</button>
+            <button class="carousel-btn prev">â€¹</button>
+            <button class="carousel-btn next">â€º</button>
         </div>
 
         <!-- Carousel Indicators -->
@@ -295,7 +332,7 @@
 
             <div class="award-detail-right">
                 <span class="award-detail-label">CERTIFICATE OF EXCELLENCE</span>
-                <h2 class="award-detail-title">ITA – Indian Trade Award 2025</h2>
+                <h2 class="award-detail-title">ITA â€“ Indian Trade Award 2025</h2>
                 
                 <p class="award-detail-text">
                     This certificate is proudly presented to : <strong>Mr. Pramod Kumar</strong><br>
@@ -313,7 +350,7 @@
                     </div>
                     <div class="award-detail-item">
                         <span class="footer-label">PRESENTED BY :</span>
-                        <p class="footer-text">JUST BESTWEB<br>ASM™ Ayurveda of Purity</p>
+                        <p class="footer-text">JUST BESTWEB<br>ASMâ„¢ Ayurveda of Purity</p>
                     </div>
                 </div>
             </div>
@@ -364,8 +401,8 @@
                     <h2 class="prof-services-title">Professional Services for Business Success</h2>
                 </div>
                 <div class="prof-nav-buttons">
-                    <button class="prof-nav-btn prev">‹</button>
-                    <button class="prof-nav-btn next">›</button>
+                    <button class="prof-nav-btn prev">â€¹</button>
+                    <button class="prof-nav-btn next">â€º</button>
                 </div>
             </div>
 
@@ -526,7 +563,7 @@
         </div>
         <div class="testimonials-container">
             <div class="testimonial-card">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="stars">â­â­â­â­â­</div>
                 <p class="testimonial-text">"The process was incredibly smooth. I got my personal loan approved in just 3 days with minimal hassle. Highly impressed with the team!"</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">RJ</div>
@@ -538,7 +575,7 @@
             </div>
 
             <div class="testimonial-card">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="stars">â­â­â­â­â­</div>
                 <p class="testimonial-text">"As a business owner, I needed a reliable partner. Hanumath Enterprises provided the perfect business loan solution to expand my operations."</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">PS</div>
@@ -550,7 +587,7 @@
             </div>
 
             <div class="testimonial-card">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <div class="stars">â­â­â­â­â­</div>
                 <p class="testimonial-text">"Their investment plans gave me excellent returns. The expert team guided me through every step. Truly a trustworthy organization!"</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">AK</div>
@@ -562,8 +599,60 @@
             </div>
         </div>
         <div class="testimonial-nav">
-            <button class="prev">←</button>
-            <button class="next">→</button>
+            <button class="prev">â†</button>
+            <button class="next">â†’</button>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="faq">
+        <div class="faq-container">
+            <div class="faq-header">
+                <span class="faq-label">Frequently Asked Questions</span>
+                <h2 class="faq-title">Your Questions Answered</h2>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        <span>How can I apply for a loan?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You can apply by filling out the online application form on our website with your details. Our team will get in touch with you to process your loan request.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        <span>What is the interest rate on loans?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Interest rates vary based on loan type, tenure, eligibility, and lender policies. Contact us for the best available rate according to your profile.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        <span>Do I need collateral to get a loan?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>It depends on the loan category. Personal loans are often unsecured, while some business or high-value loans may require collateral.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        <span>How quickly will my loan be approved?</span>
+                        <span class="faq-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Approval timelines depend on document completion and loan type, but most applications are processed quickly once all required details are submitted.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -639,37 +728,76 @@
         </div>
     </section>
 
+    <!-- FOOTER CTA OVERLAY -->
+    <section class="footer-cta-wrap">
+        <div class="footer-cta">
+            <div class="footer-cta-left">
+                <h3>Empowering Businesses,<br>One Step at a Time</h3>
+                <div class="footer-cta-cards">
+                    <div class="footer-cta-card">
+                        <span class="cta-card-icon">ðŸ“ž</span>
+                        <div>
+                            <small>Call Us 24/7</small>
+                            <p>+91 9899786114</p>
+                        </div>
+                    </div>
+                    <div class="footer-cta-card">
+                        <span class="cta-card-icon">âœ‰ï¸</span>
+                        <div>
+                            <small>Mail Us Anytime</small>
+                            <p>Mail to us</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-cta-right">
+                <div class="footer-cta-graphic"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h4>Hanumath Enterprises</h4>
-                <p>Your trusted partner in financial growth and stability.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Follow Us</h4>
-                <div class="social-links">
-                    <a href="#" class="social-link">Facebook</a>
-                    <a href="#" class="social-link">LinkedIn</a>
-                    <a href="#" class="social-link">Instagram</a>
-                    <a href="#" class="social-link">Twitter</a>
+            <div class="footer-brand">
+                <h3>Hanumath Enterprises</h3>
+                <p>At Hanumath Enterprises, we know how important it is to follow the right financial path with trusted support and simple guidance.</p>
+                <div class="footer-social">
+                    <a href="#" class="footer-social-icon">f</a>
+                    <a href="#" class="footer-social-icon">ig</a>
+                    <a href="#" class="footer-social-icon">in</a>
+                    <a href="#" class="footer-social-icon">yt</a>
+                    <a href="#" class="footer-social-icon">x</a>
                 </div>
             </div>
-            <div class="footer-section">
-                <h4>Legal</h4>
+            <div class="footer-links-column">
+                <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Disclaimer</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="calculator.html">Calculator</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="awards.html">Awards</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-column">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="home-loan.html">Home Loan</a></li>
+                    <li><a href="personal-loan.html">Personal Loan</a></li>
+                    <li><a href="business-loan.html">Business Loan</a></li>
+                    <li><a href="car-loan.html">Car Loan</a></li>
+                    <li><a href="investment-plan.html">Investment</a></li>
+                    <li><a href="life-insurance.html">Life Insurance</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact-column">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>+91 9899786114</li>
+                    <li>+91 9718000269</li>
+                    <li>B-81-B, Basement, Kalkaji, New Delhi-110019</li>
+                    <li>info@hanumath.com</li>
                 </ul>
             </div>
         </div>
@@ -684,3 +812,9 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
+
+

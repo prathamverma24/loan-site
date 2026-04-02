@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Plan - Hanumath Enterprises</title>
+    <title>Calculator - Hanumath Enterprises</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- TOP BAR -->
     <div class="top-bar">
         <div class="top-bar-container">
             <div class="top-bar-left">
-                <span class="top-bar-item"><a href="mailto:info@hanumath.com">âœ‰ï¸ info@hanumath.com</a></span>
+                <span class="top-bar-item"><a href="mailto:info@hanumath.com">&#9993; info@hanumath.com</a></span>
                 <span class="top-bar-divider">|</span>
-                <span class="top-bar-item"><a href="tel:+919899786114">ðŸ“ž +91 98997 86114</a></span>
+                <span class="top-bar-item"><a href="tel:+919899786114">&#128222; +91 98997 86114</a></span>
                 <span class="top-bar-divider">|</span>
                 <span class="top-bar-item"><a href="tel:+919718000269">+91 97180 00269</a></span>
             </div>
@@ -46,6 +47,7 @@
         </div>
     </div>
 
+    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo"><img src="images/logo-Hanumat.png" alt="Hanumath Enterprises" class="logo-image"></div>
@@ -53,7 +55,7 @@
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link">About us</a>
                 <div class="nav-item-dropdown">
-                    <button type="button" class="nav-link nav-link--has-caret nav-link-button active">Our Services <span class="nav-caret" aria-hidden="true"></span></button>
+                    <button type="button" class="nav-link nav-link--has-caret nav-link-button">Our Services <span class="nav-caret" aria-hidden="true"></span></button>
                     <div class="services-dropdown">
                         <a href="home-loan.html" class="services-dropdown-link">Home Loan</a>
                         <a href="personal-loan.html" class="services-dropdown-link">Personal Loan</a>
@@ -63,7 +65,7 @@
                         <a href="life-insurance.html" class="services-dropdown-link">Life Insurance</a>
                     </div>
                 </div>
-                <a href="calculator.html" class="nav-link">Calculator</a>
+                <a href="calculator.html" class="nav-link active">Calculator</a>
                 <a href="partners.html" class="nav-link">Partners</a>
                                 <div class="nav-item-dropdown nav-item-dropdown--achievement">
                     <button type="button" class="nav-link nav-link--has-caret nav-link-button">Achievement <span class="nav-caret" aria-hidden="true"></span></button>
@@ -75,129 +77,125 @@
                 <a href="index.html#contact" class="nav-link">Contact Us</a>
             </div>
             <button class="apply-btn">APPLY NOW</button>
-            <div class="hamburger"><span></span><span></span><span></span></div>
+            <div class="hamburger">
+                <span></span><span></span><span></span>
+            </div>
         </div>
     </nav>
 
-    <section class="about-hero">
-        <div class="about-hero-inner">
-            <h1>Investment Plan</h1>
-            <p><a href="index.html">Home</a> <span>â€º</span> <strong>Investment Plan</strong></p>
+    <!-- CALCULATOR HERO -->
+    <section class="calculator-hero">
+        <div class="calculator-hero-inner">
+            <h1>Calculator</h1>
+            <p><a href="index.html">Home</a> <span>&gt;</span> <strong>Calculator</strong></p>
         </div>
     </section>
 
-    <section class="service-page">
-        <div class="service-page-container">
-            <div class="service-main">
-                <img class="service-main-image" src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1200&h=700&fit=crop" alt="Investment Plan">
-                <h2>Investment Plan</h2>
-                <p>At Hanumath Enterprises, we provide smart and customized Investment Plan solutions designed to help you grow your wealth and secure your financial future. Whether your goal is long-term savings, wealth creation, retirement planning, or financial security for your family, our investment options are tailored to match your financial goals, risk profile, and time horizon.</p>
-                <p>With expert guidance, strategic planning, and access to trusted financial partners, we make investing simple, transparent, and rewarding.</p>
+    <!-- EMI CALCULATOR -->
+    <section class="calculator-section">
+        <div class="calculator-container">
+            <h2>EMI Calculator</h2>
 
-                <div class="service-feature-grid">
-                    <div class="service-feature-card">
-                        <h4>Tailored Financial Support for Every Need</h4>
-                        <p>We design investment plans based on your unique goals and financial situation, ensuring the right strategy, timeline, and approach.</p>
+            <div class="calculator-card">
+                <div class="calculator-form-grid">
+                    <div class="form-group full">
+                        <label for="loanType">Loan Type</label>
+                        <select id="loanType">
+                            <option>Home Loan</option>
+                            <option>Personal Loan</option>
+                            <option>Business Loan</option>
+                            <option>Car Loan</option>
+                            <option>Investment Plan</option>
+                        </select>
                     </div>
-                    <div class="service-feature-card">
-                        <h4>Investment Support You Can Trust</h4>
-                        <p>We provide personalized consultation and continuous assistance throughout your investment journey with clarity and transparency.</p>
+
+                    <div class="form-group full">
+                        <label for="loanAmount">Loan Amount</label>
+                        <input id="loanAmount" type="number" min="1" placeholder="Enter amount">
                     </div>
-                    <div class="service-feature-card">
-                        <h4>Our Expertise in Investment Solutions</h4>
-                        <p>With market insight and trusted financial partners, we help you choose the most suitable investment options from planning to review.</p>
+
+                    <div class="form-group full">
+                        <label for="interestRate">Interest Rate (%)</label>
+                        <input id="interestRate" type="number" min="0" step="0.01" placeholder="Enter interest">
                     </div>
-                    <div class="service-feature-card">
-                        <h4>Flexible Planning Made Simple</h4>
-                        <p>Our plans are built around your capacity and goals. With structured strategies and expert monitoring, we make wealth creation easy.</p>
+
+                    <div class="form-group">
+                        <label for="tenure">Tenure</label>
+                        <input id="tenure" type="number" min="1" placeholder="Duration">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tenureType">Type</label>
+                        <select id="tenureType">
+                            <option value="months">Months</option>
+                            <option value="years">Years</option>
+                        </select>
                     </div>
                 </div>
 
-                <div class="service-why">
-                    <h3>Why Choose Our Investment Plan Services?</h3>
-                    <div class="service-why-content">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&h=500&fit=crop" alt="Investment support">
-                        <ul>
-                            <li>Customized investment strategies based on your goals</li>
-                            <li>Expert financial guidance and planning support</li>
-                            <li>Flexible investment options and timelines</li>
-                            <li>Transparent process with reliable advice</li>
-                            <li>Access to trusted financial partners</li>
-                            <li>Long-term wealth growth and security focus</li>
-                        </ul>
+                <button id="calculateBtn" class="calculator-btn">Calculate EMI</button>
+
+                <div id="calculatorResult" class="calculator-result" aria-live="polite">
+                    <div class="result-item">
+                        <span>Monthly EMI</span>
+                        <strong id="monthlyEmi">-</strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Total Interest</span>
+                        <strong id="totalInterest">-</strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Total Payment</span>
+                        <strong id="totalPayment">-</strong>
                     </div>
                 </div>
-            </div>
-
-            <aside class="service-sidebar">
-                <div class="service-sidebar-box">
-                    <h4>Our Services</h4>
-                    <a class="service-side-link" href="home-loan.html">Home Loan <span>â€º</span></a>
-                    <a class="service-side-link" href="personal-loan.html">Personal Loan <span>â€º</span></a>
-                    <a class="service-side-link" href="business-loan.html">Business Loan <span>â€º</span></a>
-                    <a class="service-side-link" href="car-loan.html">Car Loan <span>â€º</span></a>
-                    <a class="service-side-link active" href="investment-plan.html">Investment Plan <span>â€º</span></a>
-                    <a class="service-side-link" href="life-insurance.html">Life Insurance <span>â€º</span></a>
-                </div>
-                <div class="service-help-box">
-                    <h4>If You Need Any Help Contact With Us</h4>
-                    <a href="tel:+919718000269">ðŸ“ž +91 9718000269</a>
-                </div>
-                <div class="service-follow-box">
-                    <h4>Follow Us</h4>
-                    <div class="service-follow-icons">
-                        <a href="#">f</a><a href="#">ig</a><a href="#">p</a><a href="#">in</a>
-                    </div>
-                </div>
-            </aside>
-        </div>
-    </section>
-
-    <section class="more-services">
-        <div class="more-services-container">
-            <h2>More Service</h2>
-            <div class="more-services-grid">
-                <article class="more-service-card">
-                    <h3>Home Loan</h3>
-                    <p>At Hanumath Enterprises, we know that buying a home is one of life's biggest milestones.</p>
-                    <a href="home-loan.html">Read More â†—</a>
-                </article>
-                <article class="more-service-card">
-                    <h3>Personal Loan</h3>
-                    <p>We provide quick and reliable Personal Loan solutions to help you in every stage.</p>
-                    <a href="personal-loan.html">Read More â†—</a>
-                </article>
-                <article class="more-service-card">
-                    <h3>Business Loan</h3>
-                    <p>We offer tailored Business Loan solutions to help your business start and expand.</p>
-                    <a href="business-loan.html">Read More â†—</a>
-                </article>
             </div>
         </div>
     </section>
 
+    <!-- FOOTER CTA OVERLAY -->
     <section class="footer-cta-wrap">
         <div class="footer-cta">
             <div class="footer-cta-left">
                 <h3>Empowering Businesses,<br>One Step at a Time</h3>
                 <div class="footer-cta-cards">
-                    <div class="footer-cta-card"><span class="cta-card-icon">ðŸ“ž</span><div><small>Call Us 24/7</small><p>+91 9899786114</p></div></div>
-                    <div class="footer-cta-card"><span class="cta-card-icon">âœ‰ï¸</span><div><small>Mail Us Anytime</small><p>Mail to us</p></div></div>
+                    <div class="footer-cta-card">
+                        <span class="cta-card-icon">&#128222;</span>
+                        <div>
+                            <small>Call Us 24/7</small>
+                            <p>+91 9899786114</p>
+                        </div>
+                    </div>
+                    <div class="footer-cta-card">
+                        <span class="cta-card-icon">&#9993;</span>
+                        <div>
+                            <small>Mail Us Anytime</small>
+                            <p>Mail to us</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="footer-cta-right"><div class="footer-cta-graphic"></div></div>
+            <div class="footer-cta-right">
+                <div class="footer-cta-graphic"></div>
+            </div>
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">
                 <h3>Hanumath Enterprises</h3>
                 <p>At Hanumath Enterprises, we know how important it is to follow the right financial path with trusted support and simple guidance.</p>
                 <div class="footer-social">
-                    <a href="#" class="footer-social-icon">f</a><a href="#" class="footer-social-icon">ig</a><a href="#" class="footer-social-icon">in</a><a href="#" class="footer-social-icon">yt</a><a href="#" class="footer-social-icon">x</a>
+                    <a href="#" class="footer-social-icon">f</a>
+                    <a href="#" class="footer-social-icon">ig</a>
+                    <a href="#" class="footer-social-icon">in</a>
+                    <a href="#" class="footer-social-icon">yt</a>
+                    <a href="#" class="footer-social-icon">x</a>
                 </div>
             </div>
+
             <div class="footer-links-column">
                 <h4>Quick Links</h4>
                 <ul>
@@ -208,6 +206,7 @@
                     <li><a href="index.html#contact">Contact Us</a></li>
                 </ul>
             </div>
+
             <div class="footer-links-column">
                 <h4>Our Services</h4>
                 <ul>
@@ -219,6 +218,7 @@
                     <li><a href="life-insurance.html">Life Insurance</a></li>
                 </ul>
             </div>
+
             <div class="footer-contact-column">
                 <h4>Contact Us</h4>
                 <ul>
@@ -236,18 +236,79 @@
         const navbar = document.querySelector('.navbar');
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
+
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) navbar.classList.add('scrolled');
-            else navbar.classList.remove('scrolled');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > 10) {
+                navbar.classList.add('navbar-hidden');
+            } else {
+                navbar.classList.remove('navbar-hidden');
+            }
         });
+
         hamburger.addEventListener('click', () => {
             navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        const amountInput = document.getElementById('loanAmount');
+        const rateInput = document.getElementById('interestRate');
+        const tenureInput = document.getElementById('tenure');
+        const tenureTypeSelect = document.getElementById('tenureType');
+        const calculateBtn = document.getElementById('calculateBtn');
+
+        const emiOut = document.getElementById('monthlyEmi');
+        const interestOut = document.getElementById('totalInterest');
+        const totalOut = document.getElementById('totalPayment');
+        const resultBox = document.getElementById('calculatorResult');
+
+        function formatINR(value) {
+            return new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                maximumFractionDigits: 0
+            }).format(value);
+        }
+
+        calculateBtn.addEventListener('click', () => {
+            const principal = parseFloat(amountInput.value);
+            const annualRate = parseFloat(rateInput.value);
+            const tenure = parseFloat(tenureInput.value);
+            const tenureType = tenureTypeSelect.value;
+
+            if (!principal || principal <= 0 || annualRate < 0 || !tenure || tenure <= 0) {
+                emiOut.textContent = 'Please enter valid values';
+                interestOut.textContent = '-';
+                totalOut.textContent = '-';
+                resultBox.classList.add('active');
+                return;
+            }
+
+            const months = tenureType === 'years' ? tenure * 12 : tenure;
+            const monthlyRate = annualRate / 12 / 100;
+
+            let emi;
+            if (monthlyRate === 0) {
+                emi = principal / months;
+            } else {
+                const factor = Math.pow(1 + monthlyRate, months);
+                emi = (principal * monthlyRate * factor) / (factor - 1);
+            }
+
+            const totalPayment = emi * months;
+            const totalInterest = totalPayment - principal;
+
+            emiOut.textContent = formatINR(Math.round(emi));
+            interestOut.textContent = formatINR(Math.round(totalInterest));
+            totalOut.textContent = formatINR(Math.round(totalPayment));
+            resultBox.classList.add('active');
         });
     </script>
 </body>
 </html>
-
-
-
 
 

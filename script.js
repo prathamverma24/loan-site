@@ -61,6 +61,12 @@ window.addEventListener('scroll', () => {
     } else {
         navbar.classList.remove('scrolled');
     }
+
+    if (window.scrollY > 10) {
+        navbar.classList.add('navbar-hidden');
+    } else {
+        navbar.classList.remove('navbar-hidden');
+    }
 });
 
 // Active nav link on scroll
@@ -239,6 +245,43 @@ if (window.innerWidth > 768) {
     testimonialCards.forEach(card => {
         card.style.display = 'block';
         gsap.set(card, { opacity: 1, scale: 1 });
+    });
+}
+
+// ========== FAQ SECTION ==========
+const faqItems = document.querySelectorAll('.faq-item');
+
+if (faqItems.length) {
+    faqItems.forEach(item => {
+        const button = item.querySelector('.faq-question');
+        if (!button) return;
+
+        button.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+
+            faqItems.forEach(faq => {
+                faq.classList.remove('active');
+                const faqButton = faq.querySelector('.faq-question');
+                if (faqButton) faqButton.setAttribute('aria-expanded', 'false');
+            });
+
+            if (!isActive) {
+                item.classList.add('active');
+                button.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
+    gsap.from('.faq-item', {
+        scrollTrigger: {
+            trigger: '.faq',
+            start: 'top 80%'
+        },
+        duration: 0.6,
+        y: 24,
+        opacity: 0,
+        stagger: 0.1,
+        ease: 'power2.out'
     });
 }
 
